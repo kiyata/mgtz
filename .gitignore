@@ -1,0 +1,8 @@
+.idea
+archive/
+target/
+build/
+bin/
+*.iml
+*.vscode
+.bsp

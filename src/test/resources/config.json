@@ -1,0 +1,66 @@
+{
+    "dev": {
+        "url": "http://instmatperftestenvprod.prod.acquia-sites.com",
+        "rampUpUsers": 1,
+        "rampUpDuration":  1,
+        "peakUsers":  1,
+        "peakDuration": 1,
+        "rampDownDuration":  1
+    },
+    "test5": {
+        "url": "http://instmatperftestenvprod.prod.acquia-sites.com",
+        "rampUpUsers": 2,
+        "rampUpDuration":  5,
+        "peakUsers":  5,
+        "peakDuration": 10,
+        "rampDownDuration":  5
+    },
+    "test10": {
+        "url": "http://instmatperftestenvprod.prod.acquia-sites.com",
+        "rampUpUsers": 5,
+        "rampUpDuration":  5,
+        "peakUsers":  10,
+        "peakDuration": 10,
+        "rampDownDuration":  5
+    },
+    "test50": {
+        "url": "http://instmatperftestenvprod.prod.acquia-sites.com",
+        "rampUpUsers": 5,
+        "rampUpDuration":  20,
+        "peakUsers":  50,
+        "peakDuration": 10,
+        "rampDownDuration":  5
+    },
+    "test100": {
+        "url": "http://instmatperftestenvprod.prod.acquia-sites.com",
+        "rampUpUsers": 10,
+        "rampUpDuration":  20,
+        "peakUsers":  100,
+        "peakDuration": 10,
+        "rampDownDuration":  5
+    },
+    "test200": {
+        "url": "http://instmatperftestenvprod.prod.acquia-sites.com",
+        "rampUpUsers": 20,
+        "rampUpDuration":  20,
+        "peakUsers":  200,
+        "peakDuration": 10,
+        "rampDownDuration":  5
+    },
+    "test250": {
+        "url": "http://instmatperftestenvprod.prod.acquia-sites.com",
+        "rampUpUsers": 25,
+        "rampUpDuration":  20,
+        "peakUsers":  250,
+        "peakDuration": 10,
+        "rampDownDuration":  5
+    },
+    "test500": {
+        "url": "http://instmatperftestenvprod.prod.acquia-sites.com",
+        "rampUpUsers": 50,
+        "rampUpDuration":  20,
+        "peakUsers":  500,
+        "peakDuration": 10,
+        "rampDownDuration":  5
+    }
+}
