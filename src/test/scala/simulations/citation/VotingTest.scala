@@ -244,9 +244,9 @@ class VotingTest extends Simulation {
 
   setUp(
     VotingScenario.inject(
-      rampConcurrentUsers(0).to(250) during 10.minutes,
-      constantConcurrentUsers(250) during 20.minutes,
-      rampConcurrentUsers(250) to 0 during 10.minutes,
+      rampConcurrentUsers(0).to(500) during 10.minutes,
+      constantConcurrentUsers(500) during 20.minutes,
+      //rampConcurrentUsers(250) to 0 during 10.minutes,
     ).protocols(httpProtocol),
   ).assertions(
     global.responseTime.max.lt(60000),
