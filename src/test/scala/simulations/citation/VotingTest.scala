@@ -44,7 +44,7 @@ class VotingTest extends Simulation {
     .get("#{LogoutUrl}")
   )
 
-  val login: ChainBuilder = tryMax(5)(
+  val login: ChainBuilder = tryMax(1)(
       exec(http("Go to login page")
       .get("#{LoginUrl}")
       .check(status.is(OK))
@@ -74,7 +74,7 @@ class VotingTest extends Simulation {
     .exitHereIfFailed
 
 
-  val goToUserProgramPage: ChainBuilder = tryMax(5)(exec(http("Go to user program page")
+  val goToUserProgramPage: ChainBuilder = tryMax(1)(exec(http("Go to user program page")
     .get("/teks/admin/srp/v2/program/#{ProgramId}/voter/vote_number/0")
     .check(status.is(OK))
     .check(substring("#{Program}").exists)
@@ -85,7 +85,7 @@ class VotingTest extends Simulation {
   )
     .exitHereIfFailed
 
-  def goToBreakoutPage(correlationUrl: String): ChainBuilder = tryMax(5)(exec(http("Go to breakout page")
+  def goToBreakoutPage(correlationUrl: String): ChainBuilder = tryMax(1)(exec(http("Go to breakout page")
     .get(correlationUrl)
     .check(css("input[name='form_build_id']", "value").findAll.saveAs("formBuildIds"))
     .check(css("input[name='form_token']", "value").findAll.saveAs("formTokens"))
@@ -151,7 +151,7 @@ class VotingTest extends Simulation {
     }
   )
 
-  def acceptCitation(): ChainBuilder = tryMax(5)(exec(
+  def acceptCitation(): ChainBuilder = tryMax(1)(exec(
     http("Accept vote (citation # #{citationIndex})")
       .post("#{correlationUrl}")
       .queryParam("ajax_form", 1)
@@ -172,7 +172,7 @@ class VotingTest extends Simulation {
     .exitHereIfFailed
 
 
-  def rejectCitation(): ChainBuilder = tryMax(5)(
+  def rejectCitation(): ChainBuilder = tryMax(1)(
     exec(http("Reject vote (citation # #{citationIndex})")
       .post("#{rejectUrl}?_wrapper_format=drupal_model")
       .formParam("js", true)
@@ -195,7 +195,7 @@ class VotingTest extends Simulation {
       .exitHereIfFailed
 
       .pause(PAUSE)
-      .tryMax(5)(
+      .tryMax(1)(
       exec(http("Rejection reason (citation #{citationIndex})")
         .post("#{rejectUrl}")
         .queryParam("_wrapper_format", "drupal_model")
@@ -215,9 +215,10 @@ class VotingTest extends Simulation {
         .check(substring("Rejected").exists)
       )
   )
+      .exitHereIfFailed
   )
 
-  def cancelVote(): ChainBuilder = tryMax(5)(
+  def cancelVote(): ChainBuilder = tryMax(1)(
     exec(http("Cancel vote (citation #{citationIndex})")
       .post("#{correlationUrl}")
       .queryParam("ajax_form", "1")
@@ -234,6 +235,7 @@ class VotingTest extends Simulation {
       .check(status.is(OK))
     )
   )
+    .exitHereIfFailed
 
   val VotingScenario: ScenarioBuilder = scenario("SRP voting")
     .feed(programUsers)
